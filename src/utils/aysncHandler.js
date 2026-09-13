@@ -1,12 +1,25 @@
-const aysncHandler = (requestHandler)=>{
-    (req,res,next)=>{
-        Promise.resolve(requestHandler(req,res,next).catch((err)=>next(err)))
+// Create a function called asyncHandler
+// It takes another function (requestHandler) as an argument
+const asyncHandler = (requestHandler) => {
+
+    // Return a new function
+    // Express will call this function with req, res and next
+   return  (req, res, next) => {
+
+        // Convert the result of requestHandler into a Promise
+        // If requestHandler succeeds, the Promise resolves
+        // If it fails, we want to send the error to Express using next()
+        Promise.resolve(
+            requestHandler(req, res, next)
+                .catch((err) => next(err))
+        );
+
     }
+
 }
 
-
-
-export {aysncHandler};
+// Export asyncHandler so it can be used in other files
+export { asyncHandler };
 
 // const asyncHandler = (fn) => async(req , res, next ) =>{
 //      try{
