@@ -1,6 +1,6 @@
 
 // Import the asyncHandler utility
-import { asyncHandler } from "./utils/asyncHandler.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
 // Controller function for registering a new user
 const registerUser = asyncHandler(async (req, res) => {
