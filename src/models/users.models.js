@@ -305,9 +305,6 @@ userSchema.methods.generateRefreshToken = function() {
 //
 // This model will be connected to the "users" collection
 // in MongoDB (Mongoose normally pluralizes the name).
-const User = mongoose.model('User', userSchema);
-
-
 // Export the User model.
 //
 // Now other files can import User and use it to:
@@ -315,4 +312,4 @@ const User = mongoose.model('User', userSchema);
 // - find users
 // - update users
 // - delete users
-const User = mongoose.model('User', userSchema);
+export const User = mongoose.model('User', userSchema);

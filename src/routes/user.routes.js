@@ -1,7 +1,7 @@
 
 // Import the Router function from the express package
 import { Router } from "express";
-import { registerUser } from "../controllers/user.controller.js";
+import { registerUser } from "../contollers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 
 // Call Router() to create a new router instance.

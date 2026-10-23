@@ -1,8 +1,8 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { ApiError } from "../utils/ApiError.js";
+import ApiError from "../utils/ApiError.js";
 import { User } from "../models/users.models.js";
-import { uploadToCloudinary } from "../utils/Cloudinary.js";
-import {ApiResponse} from "../utils/ApiResponse.js";
+import { uploadOnCloudinary as uploadToCloudinary } from "../utils/Cloudinary.js";
+import ApiResponse from "../utils/ApiResponse.js";
 // Controller function for registering a new user
 const registerUser = asyncHandler(async (req, res) => {
     // 1. Get user data from the frontend
@@ -45,9 +45,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const user=await User.create({
         fullName,
         avatar:avatars.url,
-        if(coverImages) {
-            coverImages:coverImages.url
-        },
+        coverImage: coverImages?.url || "",
         email,
         password,
         username:username.toLowerCase(),
@@ -60,6 +58,9 @@ const registerUser = asyncHandler(async (req, res) => {
     return res.status(201).json(
         new ApiResponse(200,createdUser,"User created successfully")
     )
+
+
+    
     // Continue with your Cloudinary upload,
     // user creation, and response here.
 });
