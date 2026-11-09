@@ -4,7 +4,7 @@ import { Router } from "express";
 import { registerUser } from "../contollers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { loginUser } from "../contollers/user.controller.js";
-import { logoutUser } from "../contollers/user.controller.js";
+import { logoutUser ,refreshAccessToken} from "../contollers/user.controller.js";
 // Call Router() to create a new router instance.
 const router = Router();
 
@@ -24,6 +24,6 @@ router.route("/register").post(
 
 router.route("/login").post(loginUser)
 router.route("/logout").post(verifyJWT,logoutUser)
-
+router.route("/refresh-token").post(refreshAccessToken)
 // Export this router instance as the default export
 export default router;
